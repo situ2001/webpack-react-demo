@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MyWebpackPlugin = require("./webpack/plugins/my-plugin");
 
 /**
  * @type {import('webpack').Configuration}
@@ -14,6 +15,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
+    new MyWebpackPlugin(),
   ],
   devServer: {
     static: {
