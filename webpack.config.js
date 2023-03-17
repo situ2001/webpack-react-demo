@@ -26,17 +26,20 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: ["babel-loader", "my-jsx-loader"],
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"],
+        use: ["ts-loader", "my-jsx-loader"],
       },
     ],
   },
   // pass all files through babel
   resolve: {
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+  },
+  resolveLoader: {
+    modules: ["node_modules", path.resolve(__dirname, "webpack/loaders")],
   },
 };
