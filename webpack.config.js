@@ -8,8 +8,19 @@ const MyWebpackPlugin = require("./webpack/plugins/my-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "main.js",
+    // filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "build"),
+  },
+  optimization: {
+    // not to bundle files
+    splitChunks: {
+      chunks: "all",
+    },
+    // not to minimize files
+    minimize: false,
+    // split every import files into single file
+    runtimeChunk: "single",
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -38,7 +49,7 @@ module.exports = {
       {
         test: /\.txt/,
         use: ["txt-lines-loader"],
-      }
+      },
     ],
   },
   // pass all files through babel
