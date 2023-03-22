@@ -35,6 +35,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ["ts-loader", "my-jsx-loader"],
       },
+      {
+        test: /\.txt/,
+        use: ["txt-lines-loader"],
+      }
     ],
   },
   // pass all files through babel
